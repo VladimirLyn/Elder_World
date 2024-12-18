@@ -33,7 +33,7 @@ public class ThirdPersonController : MonoBehaviour
     // Player states
     bool isJumping = false;
     bool isSprinting = false;
-    bool isCrouching = false;
+    public bool isCrouching = false;
 
     // Inputs
     float inputHorizontal;
@@ -83,7 +83,7 @@ public class ThirdPersonController : MonoBehaviour
             animator.SetBool("crouch", isCrouching);
             
             // Run
-            float minimumSpeed = 0.9f;
+            float minimumSpeed = 0.5f;
             animator.SetBool("run", cc.velocity.magnitude > minimumSpeed );
 
             // Sprint
@@ -118,7 +118,7 @@ public class ThirdPersonController : MonoBehaviour
         if ( isSprinting )
             velocityAdittion = sprintAdittion;
         if (isCrouching)
-            velocityAdittion =  - (velocity * 0.70f); // -50% velocity
+            velocityAdittion =  - (velocity * 0.80f); // -50% velocity
 
         // Direction movement
         float directionX = inputHorizontal * (velocity + velocityAdittion) * Time.deltaTime;
