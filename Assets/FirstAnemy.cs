@@ -21,7 +21,7 @@ public class FirstAnemy : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-          if (other.gameObject.GetComponent<ThirdPersonController>().isCrouching == false)
+            if (other.gameObject.GetComponent<ThirdPersonController>().isCrouching == false)
             {
                 Animation.Play("Attack");
                 Attack = true;
@@ -41,14 +41,15 @@ public class FirstAnemy : MonoBehaviour
             Agent.SetDestination(Player.transform.position);
         }
     }
-    IEnumerator Patrol()
+    public IEnumerator Patrol()
     {
-        while(Attack == false)
+        while (Attack == false)
         {
-            Agent.SetDestination(gameObject.transform.position * Random.Range(0.3f, 2f));
+            Agent = GetComponent<NavMeshAgent>();
+            Agent.SetDestination(new Vector3(gameObject.transform.position.x + Random.Range(-20f,20f), gameObject.transform.position.y, gameObject.transform.position.z + Random.Range(-20f,20f)));
             yield return new WaitForSeconds(10);
         }
-        
+
     }
 
 }
