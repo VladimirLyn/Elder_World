@@ -8,7 +8,7 @@ public class FirstAnemy : MonoBehaviour
 {
     Animator Animation;
     public GameObject Player;
-    NavMeshAgent Agent;
+    public NavMeshAgent Agent;
     bool Attack;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,7 +33,6 @@ public class FirstAnemy : MonoBehaviour
             }
         }
     }
-
     private void FixedUpdate()
     {
         if (Attack == true)
@@ -46,10 +45,13 @@ public class FirstAnemy : MonoBehaviour
         while (Attack == false)
         {
             Agent = GetComponent<NavMeshAgent>();
-            Agent.SetDestination(new Vector3(gameObject.transform.position.x + Random.Range(-20f,20f), gameObject.transform.position.y, gameObject.transform.position.z + Random.Range(-20f,20f)));
+            Agent.SetDestination(new Vector3
+                (
+                gameObject.transform.position.x + Random.Range(-20f,20f), 
+                gameObject.transform.position.y, 
+                gameObject.transform.position.z + Random.Range(-20f,20f)
+                ));
             yield return new WaitForSeconds(10);
         }
-
     }
-
 }
