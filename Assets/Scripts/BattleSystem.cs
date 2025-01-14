@@ -4,12 +4,16 @@ using UnityEngine.SceneManagement;
 public class BattleSystem : MonoBehaviour
 {
     float Player_HP = 100;
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.tag == "FirstAnemy")
+        if (other.gameObject.tag == "FirstAnemy")
         {
             Player_HP -= 0.3f;
         }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
