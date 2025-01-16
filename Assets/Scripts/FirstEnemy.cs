@@ -29,7 +29,6 @@ public class FirstAnemy : MonoBehaviour
             {
                 Attack = false;
             }
-            Debug.Log(Attack);
         }
     }
     private void FixedUpdate()
